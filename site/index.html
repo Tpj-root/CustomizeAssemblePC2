@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PC Assembly Configurator</title>
+<style>
+    body { font-family: Arial, sans-serif; background: #f5f5f5; color: #333; margin: 0; padding: 0; }
+    h1, h2 { text-align: center; margin: 10px 0; }
+    .container { max-width: 950px; margin: 20px auto; background: #fff; padding: 20px; border-radius: 12px; box-shadow: 0 0 20px rgba(0,0,0,0.1); }
+    .section { margin-bottom: 25px; }
+    select { width: 100%; padding: 10px; margin: 5px 0 15px 0; border-radius: 6px; border: 1px solid #ccc; font-size: 16px; }
+    .btn { display: block; width: 100%; text-align: center; background: #007BFF; color: #fff; border: none; padding: 12px; border-radius: 6px; cursor: pointer; font-size: 16px; margin-top: 10px; }
+    .btn:hover { background: #0056b3; }
+    #total { font-size: 1.4em; font-weight: bold; margin-top: 15px; text-align: right; }
+    @media (max-width: 600px) {
+        h1, h2 { font-size: 18px; }
+        select { font-size: 14px; }
+        .btn { font-size: 14px; padding: 10px; }
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1>PC Assembly Configurator</h1>
+
+    <!-- Motherboard -->
+    <div class="section">
+        <h2>1. Choose Motherboard</h2>
+        <select id="motherboard">
+            <option value="" data-price="0" data-gen="" data-ram="all">-- Select Motherboard --</option>
+            <option value="H61" data-price="1325" data-gen="2nd-3rd" data-ram="DDR3">H61 - 2nd & 3rd Gen</option>
+            <option value="H81" data-price="1625" data-gen="4th" data-ram="DDR3">H81 - 4th Gen</option>
+            <option value="H110" data-price="3700" data-gen="6th-7th" data-ram="DDR4">H110 - 6th & 7th Gen</option>
+            <option value="H310" data-price="3800" data-gen="8th-9th" data-ram="DDR4">H310 - 8th & 9th Gen</option>
+            <option value="H510" data-price="4900" data-gen="10th-11th" data-ram="DDR4">H510 - 10th & 11th Gen</option>
+            <option value="H610" data-price="5100" data-gen="12th-13th" data-ram="DDR4">H610 - 12th & 13th Gen</option>
+        </select>
+    </div>
+
+    <!-- Cabinet -->
+    <div class="section">
+        <h2>2. Choose Cabinet</h2>
+        <select id="cabinet">
+            <option value="" data-price="0" data-size="all">-- Select Cabinet --</option>
+            <option value="ATX Case" data-price="2500" data-size="ATX">ATX Case</option>
+            <option value="Micro-ATX Case" data-price="1800" data-size="Micro-ATX">Micro-ATX Case</option>
+            <option value="Mini-ITX Case" data-price="1500" data-size="Mini-ITX">Mini-ITX Case</option>
+        </select>
+    </div>
+
+    <!-- RAM -->
+    <div class="section">
+        <h2>3. Choose RAM</h2>
+        <select id="ram">
+            <option value="" data-price="0" data-type="all">-- Select RAM --</option>
+            <option value="DDR3 4GB" data-price="1200" data-type="DDR3">DDR3 4GB</option>
+            <option value="DDR3 8GB" data-price="1500" data-type="DDR3">DDR3 8GB</option>
+            <option value="DDR4 8GB" data-price="1600" data-type="DDR4">DDR4 8GB</option>
+            <option value="DDR4 16GB" data-price="2800" data-type="DDR4">DDR4 16GB</option>
+            <option value="DDR4 32GB" data-price="5000" data-type="DDR4">DDR4 32GB</option>
+        </select>
+    </div>
+
+    <!-- SSD -->
+    <div class="section">
+        <h2>4. Choose SSD</h2>
+        <select id="ssd">
+            <option value="" data-price="0" data-type="all">-- Select SSD --</option>
+            <option value="256GB SSD" data-price="1200">256GB SSD</option>
+            <option value="512GB SSD" data-price="2200">512GB SSD</option>
+            <option value="1TB SSD" data-price="4000">1TB SSD</option>
+        </select>
+    </div>
+
+    <!-- SMPS -->
+    <div class="section">
+        <h2>5. Power Supply (SMPS)</h2>
+        <select id="smps">
+            <option value="" data-price="0">-- Select SMPS --</option>
+            <option value="450W SMPS" data-price="1800">450W SMPS</option>
+            <option value="650W SMPS" data-price="2800">650W SMPS</option>
+            <option value="750W SMPS" data-price="3500">750W SMPS</option>
+        </select>
+    </div>
+
+    <!-- UPS -->
+    <div class="section">
+        <h2>6. UPS</h2>
+        <select id="ups">
+            <option value="" data-price="0">-- Select UPS --</option>
+            <option value="600VA" data-price="2000">600VA</option>
+            <option value="1000VA" data-price="3500">1000VA</option>
+            <option value="1500VA" data-price="5000">1500VA</option>
+        </select>
+    </div>
+
+    <!-- Cooling Fan -->
+    <div class="section">
+        <h2>7. Cooling Fan</h2>
+        <select id="fan">
+            <option value="" data-price="0">-- Select Fan --</option>
+            <option value="120mm Fan" data-price="300">120mm Fan</option>
+            <option value="140mm Fan" data-price="500">140mm Fan</option>
+            <option value="RGB Fan" data-price="800">RGB Fan</option>
+        </select>
+    </div>
+
+    <!-- Monitor -->
+    <div class="section">
+        <h2>8. Monitor</h2>
+        <select id="monitor">
+            <option value="" data-price="0">-- Select Monitor --</option>
+            <option value="21 inch" data-price="8000">21 inch</option>
+            <option value="24 inch" data-price="12000">24 inch</option>
+            <option value="27 inch" data-price="18000">27 inch</option>
+        </select>
+    </div>
+
+    <button class="btn" onclick="calculateTotal()">Check Total</button>
+    <div id="total">Total: ₹0</div>
+</div>
+
+<script>
+const motherboard = document.getElementById('motherboard');
+const ram = document.getElementById('ram');
+const cabinet = document.getElementById('cabinet');
+
+motherboard.addEventListener('change', function() {
+    const mbRamType = this.selectedOptions[0].dataset.ram;
+
+    // Filter RAM options
+    Array.from(ram.options).forEach(opt => {
+        if(opt.dataset.type === 'all' || opt.dataset.type === mbRamType) {
+            opt.style.display = '';
+        } else {
+            opt.style.display = 'none';
+        }
+    });
+
+    // Optionally reset RAM selection
+    ram.value = '';
+});
+
+function calculateTotal() {
+    const components = ['motherboard','cabinet','ram','ssd','smps','ups','fan','monitor'];
+    let total = 0;
+    components.forEach(id => {
+        const select = document.getElementById(id);
+        const price = parseInt(select.selectedOptions[0].dataset.price) || 0;
+        total += price;
+    });
+    document.getElementById('total').innerText = "Total: ₹" + total;
+}
+</script>
+
+</body>
+</html>
